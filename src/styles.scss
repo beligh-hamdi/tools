@@ -1,1 +1,39 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@use './styles/navbar-theme' as navbar;
+
+@include mat.core();
+
+ $theme: mat.define-theme((
+   color: (
+     theme-type: light,
+     primary: mat.$azure-palette,
+     tertiary: mat.$blue-palette,
+   ),
+   typography: (
+     brand-family: Roboto,
+     bold-weight: 900,
+   ),
+ ));
+
+:root {
+  @include mat.all-component-themes($theme);
+  @include navbar.theme($theme);
+}
+
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.app-card {
+  max-width: 400px;
+  margin-bottom: 10px;
+}
+
+.app-header-image {
+  background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+  background-size: cover;
+}
+
+

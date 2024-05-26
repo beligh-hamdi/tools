@@ -1,0 +1,24 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@mixin color($theme) {
+  .mat-toolbar.mat-primary {
+    background: mat.get-theme-color($theme, tertiary, 90);
+  }
+}
+
+@mixin typography($theme) {
+  .my-navbar {
+    font: mat.get-theme-typography($theme, headline-large, font);
+  }
+}
+
+@mixin theme($theme) {
+  @if mat.theme-has($theme, color) {
+    @include color($theme);
+  }
+
+  @if mat.theme-has($theme, typography) {
+    @include typography($theme);
+  }
+}
