@@ -6,7 +6,7 @@
 
     <mat-toolbar class="toolbar-sidenav">
       @if (config.logo) {
-        <img [ngSrc]="config.logo" width="50" height="50" alt="logo" [loading]="'lazy'">
+        <img [ngSrc]="appPathName + config.logo" width="50" height="50" alt="logo" [loading]="'lazy'">
       }
     </mat-toolbar>
 

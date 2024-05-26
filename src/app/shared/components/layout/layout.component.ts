@@ -10,6 +10,7 @@ import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 import {RouterLink, RouterLinkActive, RouterOutlet} from "@angular/router";
 import {AppService} from "../../services/app.service";
+import {environment} from "../../../../environments/environment";
 
 @Component({
   selector: 'app-layout',
@@ -35,6 +36,7 @@ export class LayoutComponent {
   private breakpointObserver = inject(BreakpointObserver);
   protected readonly appService = inject(AppService);
   config= this.appService.config;
+  appPathName = environment.appPathName;
 
   isHandset$: Observable<boolean> = this.breakpointObserver.observe(Breakpoints.Handset)
     .pipe(
