@@ -11,7 +11,7 @@ env:
   USER_EMAIL_BOT: github-actions-bot@noreply.gmail.com
   USER_NAME_BOT: github-actions-bot
   APPLICATION_NAME: beligh/tools
-  PUBLISH_DIR: dist/@${{ env.APPLICATION_NAME }}/browser
+  PUBLISH_DIR: dist/@beligh/tools/browser
   WORK_RUNNER_DIR: /home/runner/work/tools/tools/
 
 jobs:
