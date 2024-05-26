@@ -40,7 +40,7 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USER_NAME: beligh-hamdi
-        run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/
+        run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/ --repo=https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/beligh-hamdi/tools.git
         #  npm run deploy
 
 
