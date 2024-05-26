@@ -8,7 +8,7 @@
     "build:prod": "ng build --configuration production --base-href https://beligh-hamdi.github.io/tools/",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "deploy": "ng deploy --base-href=https://beligh-hamdi.github.io/tools/ --repo=https://github.com/beligh-hamdi/tools.git --name=\"Beligh HAMDI\" --email=beligh.hamdi@gmail.com\n"
+    "deploy": "ng deploy --base-href=https://beligh-hamdi.github.io/tools/ --repo=https://github.com/beligh-hamdi/tools.git --name=beligh-hamdi --email=beligh.hamdi@gmail.com"
   },
   "private": true,
   "dependencies": {
