@@ -29,7 +29,9 @@ jobs:
       - name: Deploy to GitHub Pages using angular-cli-ghpages
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run deploy
+        run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/ --name="beligh-hamdi" --email=beligh.hamdi@gmail.com
+        #  npm run deploy
+
 
 #      - name: Deploy GitHub Pages using  GitHub Actions
 #        if: success()
