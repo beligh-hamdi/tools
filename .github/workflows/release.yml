@@ -18,11 +18,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: GitHub Config
-        run: |
-          git config --global user.name "${{ env.USER_NAME }}"
-          git config --global user.email "${{ env.USER_EMAIL }}"
-
       - name: Release
         uses: github-developer/javascript-action@v1.0
         with:
