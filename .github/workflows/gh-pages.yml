@@ -38,9 +38,8 @@ jobs:
 
       - name: Deploy to GitHub Pages using angular-cli-ghpages
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          USER_NAME: beligh-hamdi
-        run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/ --repo=https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/beligh-hamdi/tools.git
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/
         #  npm run deploy
 
 
