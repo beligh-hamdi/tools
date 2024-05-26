@@ -10,8 +10,8 @@ env:
   USER_NAME: beligh-hamdi
   USER_EMAIL_BOT: github-actions-bot@noreply.gmail.com
   USER_NAME_BOT: github-actions-bot
-  APP_NAME: @beligh/tools
-  PUBLISH_DIR: dist/${{ env.APP_NAME }/browser
+  APPLICATION_NAME: @beligh/tools
+  PUBLISH_DIR: dist/${{ env.APPLICATION_NAME }}/browser
   WORK_RUNNER_DIR: /home/runner/work/tools/tools/
 
 jobs:
