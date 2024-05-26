@@ -4,6 +4,9 @@ on:
   push:
     branches:
       - main
+    paths-ignore:
+      - 'package.json'
+      - 'CHANGELOG.md'
 
 env:
   USER_EMAIL: beligh.hamdi@gmail.com
@@ -17,6 +20,8 @@ env:
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    env:
+      GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     permissions:
       contents: write
     concurrency:
@@ -50,6 +55,15 @@ jobs:
 #        env:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #        run: npm run deploy
+
+      - name: Bump version and push tag
+        uses: TriPSs/conventional-changelog-action@master
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          git-message: 'chore(release): {version}'
+          preset: 'angular'
+          tag-prefix: ''
+          output-file: 'CHANGELOG.md'
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
