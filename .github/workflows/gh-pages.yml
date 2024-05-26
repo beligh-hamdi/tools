@@ -28,6 +28,8 @@ jobs:
 
       - name: Deploy GitHub Pages
         run: npm run deploy
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
 
 #      - name: Deploy GitHub Pages using  GHActions
 #        if: success()
