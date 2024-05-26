@@ -13,7 +13,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
+        run: |
+          git config --global user.email "beligh.hamdi@gmail.com"
+          git config --global user.name "Beligh HAMDI"
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
