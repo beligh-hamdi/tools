@@ -20,13 +20,9 @@ jobs:
           git config --global user.email "beligh.hamdi@gmail.com"
           git config --global user.name "beligh-hamdi"
           git remote set-url origin https://x-access-token:${{ secrets.GH_TOKEN }}@github.com/beligh-hamdi/tools.git
-
+        #  git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
         #  git config --global url.https://${{ secrets.GH_TOKEN }}@github.com/
 
-#      - name: Dump GitHub context
-#        env:
-#          GITHUB_CONTEXT: ${{ toJson(github) }}
-#        run: echo "$GITHUB_CONTEXT"
 
 
       - name: Setup Node.js
@@ -42,7 +38,7 @@ jobs:
 
       - name: Deploy to GitHub Pages using angular-cli-ghpages
         env:
-          GH_TOKEN: ${{ secrets.GH_TOKEN }}
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           USER_NAME: beligh-hamdi
         run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/
         #  npm run deploy
