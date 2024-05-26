@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths-ignore:
-      - 'package.json'
-      - 'CHANGELOG.md'
 
 env:
   USER_EMAIL: beligh.hamdi@gmail.com
@@ -62,7 +59,7 @@ jobs:
       - name: package-update
         uses: taichi/actions-package-update@master
         env:
-          AUTHOR_EMAIL: ${{ env.EMAIL_BOT }}
+          AUTHOR_EMAIL: ${{ env.USER_EMAIL_BOT }}
           AUTHOR_NAME: ${{ env.USER_NAME_BOT }}
           EXECUTE: "true"
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
