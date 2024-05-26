@@ -28,20 +28,24 @@ jobs:
       - name: Install dependencies
         run: npm install
 
-#      - name: Build
-#        run: npm run build:prod
+      - name: Build
+        run: npm run build:prod
 
-      - name: Deploy to GitHub Pages using angular-cli-ghpages
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/
-        #  npm run deploy
+      - name: Copy index.html to 404.html
+        run: |
+          cp dist/beligh-tools/browser
+          cp index.html 404.html
+
+#      - name: Deploy to GitHub Pages (using angular-cli-ghpages)
+#        env:
+#          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+#        run: npm run deploy
 
 
-#      - name: Deploy GitHub Pages using  GitHub Actions
-#        if: success()
-#        uses: peaceiris/actions-gh-pages@v3
-#        with:
-#          github_token: ${{ secrets.GITHUB_TOKEN }}
-#          publish_dir: dist/beligh-tools/browser
-#          enable_jekyll: true
+      - name: Deploy GitHub Pages using  GitHub Actions
+        if: success()
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: dist/beligh-tools/browser
+          enable_jekyll: true
