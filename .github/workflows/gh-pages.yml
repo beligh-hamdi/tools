@@ -14,7 +14,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-        run: |
+
+      - run: |
           git config user.email "beligh.hamdi-noreply-bot@gmail.com"
           git config user.name "github-actions[bot]"
 
