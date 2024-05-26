@@ -5,20 +5,30 @@ on:
     branches:
       - main
 
-permissions:
-  contents: write
+env:
+  USER_EMAIL: beligh.hamdi@gmail.com
+  USER_NAME: beligh-hamdi
+  USER_EMAIL_BOT: github-actions[bot]@users.noreply.github.com
+  USER_NAME_BOT: github-actions[bot]
+  APP_NAME: @beligh/tools
+  PUBLISH_DIR: dist/${{ env.APP_NAME }}/browser
+  WORK_RUNNER_DIR: /home/runner/work/tools/tools/
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    concurrency:
+      group: ${{ github.workflow }}-${{ github.ref }}
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: GitHub Config
         run: |
-          git config --global user.email "beligh.hamdi@gmail.com"
-          git config --global user.name "beligh-hamdi"
+          git config --global user.name "${{ env.USER_NAME }}"
+          git config --global user.email "${{ env.USER_EMAIL }}"
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -33,7 +43,7 @@ jobs:
 
       - name: Copy index.html to 404.html
         run: |
-          cd /home/runner/work/tools/tools/dist/@beligh/tools/browser
+          cd ${{ env.WORK_RUNNER_DIR }} + ${{ env.PUBLISH_DIR }}
           cp index.html 404.html
 
 #      - name: Deploy to GitHub Pages (using angular-cli-ghpages)
@@ -41,11 +51,12 @@ jobs:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #        run: npm run deploy
 
-
-      - name: Deploy GitHub Pages using  GitHub Actions
-        if: success()
-        uses: peaceiris/actions-gh-pages@v3
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v4
+        if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: dist/beligh-tools/browser
+          publish_dir: $PUBLISH_DIR
           enable_jekyll: true
+          user_name: "${{ env.USER_NAME_BOT }}"
+          user_email: "${{ env.USER_EMAIL_BOT }}"
