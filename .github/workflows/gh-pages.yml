@@ -16,8 +16,9 @@ jobs:
         uses: actions/checkout@v4
 
       - run: |
-          git config user.email "beligh.hamdi-noreply-bot@gmail.com"
-          git config user.name "github-actions[bot]"
+          git config --global user.email "beligh.hamdi@gmail.com"
+          git config --global user.name "beligh-hamdi"
+        #  git config --global url.https://${{ secrets.GH_TOKEN }}@github.com/
 
       - name: Setup Node.js
         uses: actions/setup-node@v2
@@ -33,7 +34,7 @@ jobs:
       - name: Deploy to GitHub Pages using angular-cli-ghpages
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
-        run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/ --name="beligh-hamdi" --email=beligh.hamdi@gmail.com
+        run: npm run ng -- deploy --base-href=https://beligh-hamdi.github.io/tools/
         #  npm run deploy
 
 
