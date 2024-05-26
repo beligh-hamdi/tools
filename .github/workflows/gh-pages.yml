@@ -56,14 +56,19 @@ jobs:
 #          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 #        run: npm run deploy
 
-      - name: Bump version and push tag
-        uses: TriPSs/conventional-changelog-action@master
+      - name: set remote url
+        run: git remote set-url --push origin https://$GITHUB_ACTOR:${{ secrets.GITHUB_TOKEN }}@github.com/$GITHUB_REPOSITORY
+
+      - name: package-update
+        uses: taichi/actions-package-update@master
+        env:
+          AUTHOR_EMAIL: ${{ env.EMAIL_BOT }}
+          AUTHOR_NAME: ${{ env.USER_NAME_BOT }}
+          EXECUTE: "true"
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LOG_LEVEL: debug
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          git-message: 'chore(release): {version}'
-          preset: 'angular'
-          tag-prefix: ''
-          output-file: 'CHANGELOG.md'
+          args: -u --packageFile package.json --loglevel verbose
 
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v4
