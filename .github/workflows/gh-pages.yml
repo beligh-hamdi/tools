@@ -32,9 +32,7 @@ jobs:
         run: npm run build:prod
 
       - name: Copy index.html to 404.html
-        run: |
-          cp dist/beligh-tools/browser
-          cp index.html 404.html
+        run: cp dist/beligh-tools/browser/index.html dist/beligh-tools/browser/404.html
 
 #      - name: Deploy to GitHub Pages (using angular-cli-ghpages)
 #        env:
