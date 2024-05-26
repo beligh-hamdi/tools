@@ -10,8 +10,8 @@ env:
   USER_NAME: beligh-hamdi
   USER_EMAIL_BOT: github-actions-bot@noreply.gmail.com
   USER_NAME_BOT: github-actions-bot
-  APPLICATION_NAME: @beligh/tools
-  PUBLISH_DIR: dist/${{ env.APPLICATION_NAME }}/browser
+  APPLICATION_NAME: beligh/tools
+  PUBLISH_DIR: dist/@${{ env.APPLICATION_NAME }}/browser
   WORK_RUNNER_DIR: /home/runner/work/tools/tools/
 
 jobs:
@@ -56,7 +56,7 @@ jobs:
         if: github.ref == 'refs/heads/main'
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: $PUBLISH_DIR
+          publish_dir: ${{ env.PUBLISH_DIR }}
           enable_jekyll: true
           user_name: "${{ env.USER_NAME_BOT }}"
           user_email: "${{ env.USER_EMAIL_BOT }}"
